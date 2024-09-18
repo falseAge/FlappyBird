@@ -22,13 +22,12 @@ public class BirdMover : MonoBehaviour
 
     private void Start()
     {
-        transform.position = _startPosition;
-
         _rigidBody = GetComponent<Rigidbody2D>();
-        _rigidBody.velocity = Vector2.zero;
 
         _maxRotation = Quaternion.Euler(0, 0, _maxRotationZ);
         _minRotation = Quaternion.Euler(0, 0, _minRotationZ);
+
+        ResetBird();
     }
 
     private void Update(){
@@ -40,5 +39,12 @@ public class BirdMover : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Lerp(transform.rotation, _minRotation, _rotationSpeed * Time.deltaTime);
+    }
+
+    public void ResetBird()
+    {
+        transform.position = _startPosition;
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        _rigidBody.velocity = Vector2.zero;
     }
 }
