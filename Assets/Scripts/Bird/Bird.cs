@@ -11,6 +11,7 @@ public class Bird : MonoBehaviour
     private int _score;
 
     public event UnityAction GameOver;
+    public event UnityAction<int> ScoreChanger;
 
     private void Start()
     {
@@ -20,12 +21,15 @@ public class Bird : MonoBehaviour
     public void AddScore()
     {
         _score++;
+        ScoreChanger?.Invoke(_score);
     }
 
     public void ResetPlayer()
     {
         _score = 0;
+        ScoreChanger?.Invoke(_score);
         _mover.ResetBird();
+
     }
 
     public void Die()
