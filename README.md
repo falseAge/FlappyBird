@@ -13,6 +13,8 @@
 
 ## Instruments:
 
+TextMesh Pro
+
 ## Toolkit:
 
 C#, Unity
